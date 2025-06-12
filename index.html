@@ -20,6 +20,7 @@
             /* The primary red color from the design */
             background-color: #C51A42;
             color: #ffffff;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* Custom animation for the rotating scroll text */
@@ -41,7 +42,6 @@
     <div class="bg-[#C51A42] min-h-screen flex flex-col items-center relative overflow-hidden">
         
         <!-- Background Decorative Curves -->
-        <!-- These are subtle, large-scale SVG curves to mimic the background effect in the image -->
         <div class="absolute inset-0 w-full h-full opacity-10 pointer-events-none">
             <svg class="absolute -top-1/4 left-0 w-full" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M-200 800C200 800 400 400 720 400C1040 400 1240 800 1640 800" stroke="white" stroke-width="200" stroke-linecap="round"/>
@@ -52,61 +52,73 @@
         </div>
 
         <!-- Header -->
-        <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 z-20">
+        <header class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 z-30">
             <nav class="flex items-center justify-between">
-                <!-- Logo and Primary Navigation -->
-                <div class="flex items-center space-x-10">
-                    <!-- Logo -->
-                    <a href="#" class="flex items-center space-x-3">
-                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="white"/>
-                            <path d="M20 7.5L32.5 20L20 32.5L7.5 20L20 7.5Z" fill="#C51A42"/>
-                            <path d="M20 12.5L27.5 20L20 27.5L12.5 20L20 12.5Z" fill="white"/>
-                        </svg>
-                        <span class="text-2xl font-bold tracking-wide">NAKANO</span>
-                    </a>
-                    <!-- Desktop Navigation Links -->
-                    <div class="hidden lg:flex items-center space-x-8 text-white/90">
-                        <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">Why Nakano?</a>
-                        <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">How It Works</a>
-                        <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">Success Stories</a>
-                        <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">FAQs</a>
-                    </div>
-                </div>
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 0L40 20L20 40L0 20L20 0Z" fill="white"/>
+                        <path d="M20 7.5L32.5 20L20 32.5L7.5 20L20 7.5Z" fill="#C51A42"/>
+                        <path d="M20 12.5L27.5 20L20 27.5L12.5 20L20 12.5Z" fill="white"/>
+                    </svg>
+                    <span class="text-2xl font-bold tracking-wide">NAKANO</span>
+                </a>
 
-                <!-- Action Buttons & Mobile Menu -->
-                <div class="flex items-center space-x-4">
-                     <!-- Desktop Action Buttons -->
-                    <div class="hidden sm:flex items-center space-x-4">
-                        <a href="#" class="px-5 py-2.5 text-sm font-semibold text-white bg-white/10 rounded-full hover:bg-white/20 transition-all duration-200">Log In</a>
-                        <a href="#" class="flex items-center space-x-2 px-5 py-2.5 text-sm font-semibold text-[#C51A42] bg-white rounded-full hover:bg-gray-200 transform hover:scale-105 transition-all duration-200">
-                            <span>Contact Us</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5-5 5M6 12h12"></path></svg>
-                        </a>
-                    </div>
-                    <!-- Mobile Menu Button -->
-                    <div class="lg:hidden">
-                        <button class="p-2 text-white rounded-md hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                        </button>
-                    </div>
+                <!-- Desktop Navigation & Buttons -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">Why Nakano?</a>
+                    <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">How It Works</a>
+                    <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">Success Stories</a>
+                    <a href="#" class="text-sm font-medium hover:text-white transition-colors duration-200">FAQs</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                     <a href="#" class="px-5 py-2.5 text-sm font-semibold text-white bg-white/10 rounded-full hover:bg-white/20 transition-all duration-200">Log In</a>
+                     <a href="#" class="flex items-center space-x-2 px-5 py-2.5 text-sm font-semibold text-[#C51A42] bg-white rounded-full hover:bg-gray-200 transform hover:scale-105 transition-all duration-200">
+                         <span>Contact Us</span>
+                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5-5 5M6 12h12"></path></svg>
+                     </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="menu-btn" class="p-2 text-white rounded-md hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
                 </div>
             </nav>
         </header>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-0 left-0 w-full h-full bg-[#C51A42] z-20">
+            <div class="flex flex-col items-center justify-center h-full space-y-8">
+                <a href="#" class="text-2xl font-bold text-white">Why Nakano?</a>
+                <a href="#" class="text-2xl font-bold text-white">How It Works</a>
+                <a href="#" class="text-2xl font-bold text-white">Success Stories</a>
+                <a href="#" class="text-2xl font-bold text-white">FAQs</a>
+                 <div class="flex flex-col items-center space-y-6 pt-8">
+                     <a href="#" class="w-full text-center px-8 py-3 text-lg font-semibold text-white bg-white/10 rounded-full hover:bg-white/20 transition-all duration-200">Log In</a>
+                     <a href="#" class="flex items-center justify-center space-x-2 w-full px-8 py-3 text-lg font-semibold text-[#C51A42] bg-white rounded-full hover:bg-gray-200 transition-all duration-200">
+                         <span>Contact Us</span>
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5-5 5M6 12h12"></path></svg>
+                     </a>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Main Content -->
-        <main class="flex-grow flex items-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-            <div class="max-w-4xl text-center sm:text-left">
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+        <main class="flex-grow flex items-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 -mt-16 sm:-mt-0">
+            <div class="w-full max-w-4xl text-center lg:text-left">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
                     Transform Your Business, with Modern, High Performance Websites
                 </h1>
-                <p class="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto sm:mx-0">
+                <p class="mt-6 text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto lg:mx-0">
                     10+ years of expertise, local to Leamington Spa, delivering stunning design and smart tech solutions—fast and affordable.
                 </p>
                 <div class="mt-10">
-                    <a href="#" class="inline-flex items-center space-x-3 px-8 py-4 text-base font-semibold text-[#C51A42] bg-white rounded-full shadow-lg hover:bg-gray-200 transform hover:scale-105 transition-all duration-300">
+                    <a href="#" class="inline-flex items-center space-x-3 px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-[#C51A42] bg-white rounded-full shadow-lg hover:bg-gray-200 transform hover:scale-105 transition-all duration-300">
                         <span>Get a Free Website Audit</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5-5 5M6 12h12"></path></svg>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5-5 5M6 12h12"></path></svg>
                     </a>
                 </div>
             </div>
@@ -117,10 +129,8 @@
             <!-- Rotating Text -->
             <div class="absolute w-full h-full animate-spin-slow">
                 <svg viewBox="0 0 100 100">
-                    <!-- A circular path for the text -->
                     <path id="circlePath" fill="none" d="M 50, 50 m -45, 0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"></path>
                     <text>
-                        <!-- The text that will follow the path -->
                         <textPath xlink:href="#circlePath" class="text-xs font-semibold tracking-wider uppercase" fill="white" startOffset="50%" text-anchor="middle">
                             Scroll down * Scroll down *
                         </textPath>
@@ -136,6 +146,18 @@
         </div>
 
     </div>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Optional: prevent body scroll when menu is open
+            document.body.style.overflow = mobileMenu.classList.contains('hidden') ? 'auto' : 'hidden';
+        });
+    </script>
 
 </body>
 </html>
